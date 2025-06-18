@@ -12,5 +12,5 @@
         <p>{{ form.confirm_password.label }}<br>{{ form.confirm_password(size=32) }}</p>
         <p>{{ form.submit() }}</p>
     </form>
-    <p>Already have an account? <a href="{{ url_for('auth.login') }}">Login</a></p>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
 {% endblock %}

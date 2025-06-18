@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,SubmitField
+from wtforms import StringField,PasswordField,SubmitField,TextAreaField
 from wtforms.validators import InputRequired,Email,EqualTo,Length
 
 
@@ -15,3 +15,9 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password',validators=[InputRequired()])
     submit = SubmitField('Login')
     
+
+class EditProfileForm(FlaskForm):
+    bio = TextAreaField("Bio", validators=[Length(max=500)])
+    skills_to_teach = StringField("Skills to Teach", validators=[Length(max=256)])
+    skills_to_learn = StringField("Skills to Learn", validators=[Length(max=256)])
+    submit = SubmitField("Save")
