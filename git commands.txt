@@ -1,0 +1,8 @@
+git add .
+git commit -m "Set up Flask backend basic structure"
+git push -u origin setup/flask-backend
+
+
+# merge only after testing
+git checkout main
+git merge setup/flask-backend
