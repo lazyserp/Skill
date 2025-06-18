@@ -1,13 +1,8 @@
 import os
-from dotenv import load_dotenv
+from app.routes import app
 
-# ✅ Load .env from absolute path
-dotenv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '.env'))
-load_dotenv(dotenv_path)  # 🔥 THIS ensures .env is loaded properly
+# Explicitly set the template folder path to ensure templates load correctly
+app.template_folder = os.path.join(os.path.dirname(__file__), 'app', 'templates')
 
-from app import create_app
-
-app = create_app()
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)

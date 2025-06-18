@@ -8,6 +8,9 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(150),nullable =False,unique=True)
     email = db.Column(db.String(150),nullable=False,unique=True)
     password_hash = db.Column(db.String(256),nullable = False)
+    bio = db.Column(db.Text)
+    skills_to_teach = db.Column(db.String(256))
+    skills_to_learn = db.Column(db.String(256))
 
 
     def set_password(self,password):
