@@ -6,3 +6,15 @@ git push -u origin setup/flask-backend
 # merge only after testing
 git checkout main
 git merge setup/flask-backend
+
+
+
+//initialise databse
+python
+from app import create_app
+from app.extensions import db
+from app.models.user import User  # or any other model
+
+app = create_app()
+app.app_context().push()
+db.create_all()
