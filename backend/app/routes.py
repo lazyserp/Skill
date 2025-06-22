@@ -134,15 +134,15 @@ def delete_user(user_id):
     return redirect(url_for('admin_dashboard'))
 
 
-# @app.route('/make-admin')
-# def make_admin():
-#     username = request.args.get('username')
-#     if not username:
-#         return "❌ Please provide username like ?username=yourname"
+@app.route('/make-admin')
+def make_admin():
+    username = request.args.get('username')
+    if not username:
+        return "❌ Please provide username like ?username=yourname"
 
-#     user = User.query.filter_by(username=username).first()
-#     if user:
-#         user.is_admin = True
-#         db.session.commit()
-#         return f"✅ {username} is now an admin!"
-#     return "❌ User not found"
+    user = User.query.filter_by(username=username).first()
+    if user:
+        user.is_admin = True
+        db.session.commit()
+        return f"✅ {username} is now an admin!"
+    return "❌ User not found"
