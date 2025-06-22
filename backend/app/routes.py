@@ -18,8 +18,8 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 
 @app.route('/')
@@ -54,6 +54,12 @@ def login():
         if user and user.check_password(form.password.data):
             login_user(user)
             flash('Logged in Successfully!', 'success')
+
+            session['user_id'] = user.id
+            from datetime import timedelta
+            app.permanent_session_lifetime = timedelta(days=1)
+            session.permanent = True
+
             return redirect(url_for('dashboard'))
         flash('Invalid username or password', 'danger')
     return render_template('login.html.j2', form=form)
@@ -95,29 +101,55 @@ def edit_profile():
 
 
 @app.route('/admin')
+from flask import request, redirect, url_for, render_template
+from app.models import User
+from app.extensions import db
+
+@app.route('/admin', methods=['GET'])
 def admin_dashboard():
-    # Check if the current user is admin
-    user_id = session.get('user_id')
-    if not user_id:
-        return redirect(url_for('login'))  # adjust route name as needed
-
-    user = User.query.get(user_id)
-    if not user or not user.is_admin:
-        return "Access Denied", 403
-
-    users = User.query.all()
+    search_query = request.args.get('search', '')
+    if search_query:
+        users = User.query.filter(
+            (User.username.contains(search_query)) | (User.email.contains(search_query))
+        ).all()
+    else:
+        users = User.query.all()
     return render_template('admin_dashboard.html', users=users)
 
-
-@app.route('/make-admin')
-def make_admin():
-    username = request.args.get('username')
-    if not username:
-        return "❌ Please provide username like ?username=yourname"
-
-    user = User.query.filter_by(username=username).first()
+@app.route('/promote/<int:user_id>', methods=['POST'])
+def promote_user(user_id):
+    user = User.query.get(user_id)
     if user:
         user.is_admin = True
         db.session.commit()
-        return f"✅ {username} is now an admin!"
-    return "❌ User not found"
+    return redirect(url_for('admin_dashboard'))
+
+@app.route('/demote/<int:user_id>', methods=['POST'])
+def demote_user(user_id):
+    user = User.query.get(user_id)
+    if user:
+        user.is_admin = False
+        db.session.commit()
+    return redirect(url_for('admin_dashboard'))
+
+@app.route('/delete/<int:user_id>', methods=['POST'])
+def delete_user(user_id):
+    user = User.query.get(user_id)
+    if user:
+        db.session.delete(user)
+        db.session.commit()
+    return redirect(url_for('admin_dashboard'))
+
+
+# @app.route('/make-admin')
+# def make_admin():
+#     username = request.args.get('username')
+#     if not username:
+#         return "❌ Please provide username like ?username=yourname"
+
+#     user = User.query.filter_by(username=username).first()
+#     if user:
+#         user.is_admin = True
+#         db.session.commit()
+#         return f"✅ {username} is now an admin!"
+#     return "❌ User not found"
