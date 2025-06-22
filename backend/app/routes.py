@@ -107,7 +107,7 @@ def admin_dashboard():
         ).all()
     else:
         users = User.query.all()
-    return render_template('admin_dashboard.html', users=users)
+    return render_template('admin_dashboard.html.j2', users=users)
 
 @app.route('/promote/<int:user_id>', methods=['POST'])
 def promote_user(user_id):
