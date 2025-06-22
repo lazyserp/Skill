@@ -98,13 +98,6 @@ def edit_profile():
 
     return render_template("edit_profile.html.j2", form=form)
 
-
-
-@app.route('/admin')
-from flask import request, redirect, url_for, render_template
-from app.models import User
-from app.extensions import db
-
 @app.route('/admin', methods=['GET'])
 def admin_dashboard():
     search_query = request.args.get('search', '')
