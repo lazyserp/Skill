@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash, request
+from flask import Flask, render_template, redirect, url_for, flash, request,session
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from app.extensions import db
 from app.models.user import User
@@ -92,3 +92,28 @@ def edit_profile():
 
     return render_template("edit_profile.html.j2", form=form)
 
+
+
+@app.route('/admin')
+def admin_dashboard():
+    # Check if the current user is admin
+    user_id = session.get('user_id')
+    if not user_id:
+        return redirect(url_for('login'))  # adjust route name as needed
+
+    user = User.query.get(user_id)
+    if not user or not user.is_admin:
+        return "Access Denied", 403
+
+    users = User.query.all()
+    return render_template('admin_dashboard.html', users=users)
+
+
+@app.route('/make-admin')
+def make_admin():
+    user = User.query.filter_by(email='your@email.com').first()
+    if user:
+        user.is_admin = True
+        db.session.commit()
+        return "You are now admin ✅"
+    return "User not found ❌"
