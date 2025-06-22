@@ -1,5 +1,5 @@
 git add .
-git commit -m "Set up Flask backend basic structure"
+git commit -m "Phase 2  - Established user registration and login"
 git push -u origin setup/flask-backend
 
 
@@ -10,11 +10,4 @@ git merge setup/flask-backend
 
 
 //initialise databse
-python
-from app import create_app
-from app.extensions import db
-from app.models.user import User  # or any other model
-
-app = create_app()
-app.app_context().push()
-db.create_all()
+python init_db.py
