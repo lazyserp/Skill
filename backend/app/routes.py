@@ -111,9 +111,13 @@ def admin_dashboard():
 
 @app.route('/make-admin')
 def make_admin():
-    user = User.query.filter_by(email='your@email.com').first()
+    username = request.args.get('username')
+    if not username:
+        return "❌ Please provide username like ?username=yourname"
+
+    user = User.query.filter_by(username=username).first()
     if user:
         user.is_admin = True
         db.session.commit()
-        return "You are now admin ✅"
-    return "User not found ❌"
+        return f"✅ {username} is now an admin!"
+    return "❌ User not found"
