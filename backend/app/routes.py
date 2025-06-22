@@ -18,6 +18,10 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
+with app.app_context():
+    db.create_all()
+
+
 @app.route('/')
 def home():
     return render_template('home.html.j2')
@@ -87,3 +91,4 @@ def edit_profile():
         form.skills_to_learn.data = current_user.skills_to_learn
 
     return render_template("edit_profile.html.j2", form=form)
+
