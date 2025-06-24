@@ -3,11 +3,13 @@
 {% block title %}Dashboard | SkillSwap{% endblock %}
 
 {% block content %}
-    <h2>Welcome, {{ user.username }}!</h2>
-    <p><strong>Bio:</strong> {{ current_user.bio or "Not set" }}</p>
-    <p><strong>Skills to Teach:</strong> {{ current_user.skills_to_teach or "Not set" }}</p>
-    <p><strong>Skills to Learn:</strong> {{ current_user.skills_to_learn or "Not set" }}</p>
-
-
+<div class="user-details-card">
+    <div class="card-content">
+        <h2>Welcome, {{ user.username }}!</h2>
+        <p><strong>Bio:</strong> {{ current_user.bio or "Not set" }}</p>
+        <p><strong>Skills to Teach:</strong> {{ current_user.skills_to_teach or "Not set" }}</p>
+        <p><strong>Skills to Learn:</strong> {{ current_user.skills_to_learn or "Not set" }}</p>
+    </div>
+</div>
 
 {% endblock %}

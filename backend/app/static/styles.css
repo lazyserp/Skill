@@ -156,3 +156,24 @@ body {
     color: #fff;
     font-size: 1rem;
 }
+
+
+.user-detail-card {
+  width: 300px;
+  margin: auto; /* horizontally center the card itself */
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center; /* horizontal alignment of content */
+  align-items: center;     /* vertical alignment of content */
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;   /* stack elements vertically */
+  align-items: center;      /* center items horizontally */
+  gap: 16px;                /* spacing between elements */
+  text-align: center;
+}

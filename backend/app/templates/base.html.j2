@@ -11,6 +11,10 @@
   <header>
     <div class="superheading"><a href="/">SkillSwap</a></h1> </div>
     <div class="nav">
+    {% if current_user.is_admin %}
+    <a href="{{url_for('admin_dashboard')}}" class="login">Admin Dashboard</a>
+    {% endif %}
+
     {% if current_user.is_authenticated %}
     <a href="{{ url_for('logout') }}" class="login">Logout  </a>
     <a href="{{ url_for('dashboard') }}" class="login">Dashboard</a> 
