@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-    <title>Admin Dashboard</title>
-    <style>
+<title>Admin Dashboard</title>
+<style>
         body { font-family: Arial; padding: 30px; }
         input[type="text"] { padding: 6px; width: 300px; }
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
@@ -12,43 +13,41 @@
     </style>
 </head>
 <body>
-    <h2>Admin Dashboard</h2>
-
-    <form method="GET" action="{{ url_for('admin_dashboard') }}">
-        <input type="text" name="search" placeholder="Search by username/email" value="{{ request.args.get('search', '') }}">
-        <button type="submit">Search</button>
-    </form>
-
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th><th>Username</th><th>Email</th><th>Admin</th><th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<h2>Admin Dashboard</h2>
+<form action="{{ url_for('admin_dashboard') }}" method="GET">
+<input name="search" placeholder="Search by username/email" type="text" value="{{ request.args.get('search', '') }}"/>
+<button type="submit">Search</button>
+</form>
+<table>
+<thead>
+<tr>
+<th>ID</th><th>Username</th><th>Email</th><th>Admin</th><th>Actions</th>
+</tr>
+</thead>
+<tbody>
             {% for user in users %}
             <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ '✅' if user.is_admin else '❌' }}</td>
-                <td class="actions">
+<td>{{ user.id }}</td>
+<td>{{ user.username }}</td>
+<td>{{ user.email }}</td>
+<td>{{ '✅' if user.is_admin else '❌' }}</td>
+<td class="actions">
                     {% if not user.is_admin %}
                     <form action="{{ url_for('promote_user', user_id=user.id) }}" method="POST" style="display:inline;">
-                        <button type="submit">Promote</button>
-                    </form>
+<button type="submit">Promote</button>
+</form>
                     {% else %}
                     <form action="{{ url_for('demote_user', user_id=user.id) }}" method="POST" style="display:inline;">
-                        <button type="submit">Demote</button>
-                    </form>
+<button type="submit">Demote</button>
+</form>
                     {% endif %}
                     <form action="{{ url_for('delete_user', user_id=user.id) }}" method="POST" style="display:inline;">
-                        <button type="submit" onclick="return confirm('Delete this user?')">Delete</button>
-                    </form>
-                </td>
-            </tr>
+<button onclick="return confirm('Delete this user?')" type="submit">Delete</button>
+</form>
+</td>
+</tr>
             {% endfor %}
         </tbody>
-    </table>
+</table>
 </body>
 </html>

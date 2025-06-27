@@ -1,21 +1,6 @@
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'HostGrotesk', sans-serif;
-  background-color: #121212;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-}
-
-
 /* static/styles.css */
 
+/* Inter font from Google */
 @font-face {
   font-family: 'HostGrotesk';
   src: url('../static/fonts/HostGrotesk-VariableFont_wght.ttf');
@@ -27,28 +12,31 @@ a
 {
   color: inherit;
   text-decoration: none;
-  margin: 10px;
-
 }
 
+body {
+  font-family: 'HostGrotesk';
+  background-color: #0D0D0D;
+  color: aliceblue;
+  margin: 0;
+  padding: 0;
+}
 
-
-.main-title
+.superheading
 {
   display:flex;
   justify-content: center;
   align-items: center;
   font-family: 'HostGrotesk';
-  font-size: 200px;
+  font-size: 100px;
   font-weight:600 ;
-  color: 		#E0E0E0;
-  margin: 100px 0px 0px 0px ;
+  color: aliceblue;
+  margin: 20px;
   padding: 0;
-  line-height: 1;
-
+  line-height: 1.6;
 }
 
-.nav-center
+.nav
 {
   font-weight: 500;
   font-size: 20px;
@@ -57,15 +45,7 @@ a
   align-items: center;
 }
 
-.nav-links{
-  display: flex;
-  justify-content: end;
-  align-items: end;
-  color: #E0E0E0;
-  margin: 10px;
-}
-
-.btn-login {
+.login {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,7 +59,7 @@ a
   cursor: pointer;
 }
 
-.btn-login:hover{
+.login:hover{
   background-color: #383838;
 }
 
@@ -104,7 +84,7 @@ a
   background-color: #323232;
 }
 
-.btn-login-wrapper {
+.login-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,7 +99,7 @@ a
   color:aqua;
 }
 
-.form-submit-wrapper {
+.submit-wrapper {
   display: flex;
   justify-content: center; /* Center horizontally */
   margin-top: 1rem;
@@ -142,7 +122,7 @@ a
     margin-bottom: 1rem;
 }
 
-.btn-login-card {
+.login-card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -167,7 +147,7 @@ a
     margin-top: 1.5rem;
 }
 
-.form-input {
+.styled-input {
     padding: 10px 15px;
     border-radius: 20px;
     border: 1px solid #444;
@@ -198,8 +178,20 @@ a
   text-align: center;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-.nav-centerbar {
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.navbar {
   display: flex;
   justify-content: space-between;
   padding: 20px 40px;
@@ -213,22 +205,23 @@ a
   color: #333;
 }
 
-.nav-center-links a {
+.nav-links a {
   margin-left: 20px;
   text-decoration: none;
   color: #555;
 }
 
-.nav-center-links a:hover {
+.nav-links a:hover {
   color: #000;
 }
 
 .hero {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: #E0E0E0;
-  
+  justify-content: space-between;
+  padding: 60px 40px;
+  background-color: #f0f4ff;
+  min-height: 90vh;
 }
 
 .hero-text {
@@ -237,32 +230,27 @@ a
 }
 
 .hero-text h1 {
-  font-size: 25px;
+  font-size: 42px;
   margin-bottom: 20px;
-  color: #cacaca;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+  color: #2b2b2b;
 }
 
 .hero-text p {
   font-size: 18px;
   margin-bottom: 30px;
-  color: #cacaca;
 }
 
 .btn-primary {
   padding: 12px 24px;
-  background-color: #4F46E5;
-  color: #FFFFFF;
+  background-color: #007BFF;
+  color: white;
   border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
 }
 
 .btn-primary:hover {
-  background-color: #6366F1;
+  background-color: #0056b3;
 }
 
 .hero-image {

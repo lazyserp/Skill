@@ -24,7 +24,7 @@ login_manager.login_view = 'login'
 
 @app.route('/')
 def home():
-    return render_template('home.html.j2')
+    return render_template("landing.html.j2")
 
 @app.route('/dashboard')
 @login_required
@@ -146,3 +146,4 @@ def make_admin():
         db.session.commit()
         return f"✅ {username} is now an admin!"
     return "❌ User not found"
+
