@@ -4,9 +4,9 @@
 {% block content %}
 <header>
     <nav class="nav-links">
-        <a href="#how-it-works"> How it Works </a>
-        <a href="#features"> features </a>
-        <a href="#join-now"> Join Now </a>
+        {# <a href="#how-it-works"> How it Works </a>
+        <a href="#features"> features </a> #}
+        <a href="{{ url_for('register') }}"> Join Now </a>
     </nav>
     <div class="main-title">SkillSwap</div>
 </header>
@@ -14,8 +14,9 @@
     <div class="hero-text">
         <h1> Learn what you want. Teach what you love.</h1>
         {# <p>Connect with people in your area or online to swap skills and grow together.</p> #}
-        <a class="btn-primary" href="{{ url_for('login') }}"> Get Started</a>
-        
+        <div class="btn">
+            <a class="btn-primary" href="{{ url_for('login') }}"> Get Started</a>
+        </div>
     </div>
 </section>
 

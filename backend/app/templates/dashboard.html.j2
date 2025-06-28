@@ -3,13 +3,28 @@
 {% block title %}Dashboard | SkillSwap{% endblock %}
 
 {% block content %}
+    <div class="nav-links">
+    {% if current_user.is_admin %}
+    <a class="btn-login" href="{{url_for('admin_dashboard')}}">Admin Dashboard</a>
+    {% endif %}
+    
+    {% if current_user.is_authenticated %}
+    <a class="btn-login" href="{{ url_for('logout') }}">Logout </a>
+    <a class="btn-login" href="{{ url_for('dashboard') }}">Dashboard</a>
+    <a class="btn-login" href="{{ url_for('edit_profile') }}">Edit Profile</a>
+    {% else %}
+    <a class="btn-login" href="{{ url_for('login') }}">Login</a>
+    <a class="btn-login" href="{{ url_for('register') }}">Register</a> #}
+    
+    {% endif %}
+    </div>
 <div class="user-details-card">
-<div class="card-content">
-<h2>Welcome, {{ user.username }}!</h2>
-<p><strong>Bio:</strong> {{ current_user.bio or "Not set" }}</p>
-<p><strong>Skills to Teach:</strong> {{ current_user.skills_to_teach or "Not set" }}</p>
-<p><strong>Skills to Learn:</strong> {{ current_user.skills_to_learn or "Not set" }}</p>
-</div>
+    <div class="card-content">
+        <h2>Welcome, {{ user.username }}!</h2>
+        <p><strong>Bio:</strong> {{ current_user.bio or "Not set" }}</p>
+        <p><strong>Skills to Teach:</strong> {{ current_user.skills_to_teach or "Not set" }}</p>
+        <p><strong>Skills to Learn:</strong> {{ current_user.skills_to_learn or "Not set" }}</p>
+    </div>
 </div>
 
 {% endblock %}

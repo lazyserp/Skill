@@ -9,5 +9,5 @@ if os.getenv('RAILWAY_ENVIRONMENT') is None:
 
 class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret')
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///skill_swap.db')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'mysql+pymysql://root:12345678@localhost/skillswap')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
