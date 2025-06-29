@@ -82,6 +82,9 @@ def register_routes(app, login_manager):
 
     @app.route('/login', methods=["GET", "POST"])
     def login():
+        if current_user.is_authenticated:
+            return redirect(url_for('dashboard'))
+            
         form = LoginForm()
         if form.validate_on_submit():
             user = User.query.filter_by(username=form.username.data).first()
@@ -89,7 +92,6 @@ def register_routes(app, login_manager):
                 login_user(user)
                 flash('Logged in Successfully!', 'success')
 
-                session['user_id'] = user.id
                 app.permanent_session_lifetime = timedelta(days=1)
                 session.permanent = True
 
@@ -112,6 +114,7 @@ def register_routes(app, login_manager):
         form = EditProfileForm()
 
         if form.validate_on_submit():
+            current_user.username = form.username.data
             current_user.bio = form.bio.data
             current_user.skills_to_teach = form.skills_to_teach.data
             current_user.skills_to_learn = form.skills_to_learn.data
@@ -120,6 +123,7 @@ def register_routes(app, login_manager):
             return redirect(url_for("dashboard"))
 
         if request.method == "GET":
+            form.username.data = current_user.username
             form.bio.data = current_user.bio
             form.skills_to_teach.data = current_user.skills_to_teach
             form.skills_to_learn.data = current_user.skills_to_learn

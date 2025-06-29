@@ -17,6 +17,7 @@ class LoginForm(FlaskForm):
     
 
 class EditProfileForm(FlaskForm):
+    username = StringField('Username',validators=[InputRequired(),Length(min=4,max=25)])
     bio = TextAreaField("Bio", validators=[Length(max=500)])
     skills_to_teach = StringField("Skills to Teach", validators=[Length(max=256)])
     skills_to_learn = StringField("Skills to Learn", validators=[Length(max=256)])

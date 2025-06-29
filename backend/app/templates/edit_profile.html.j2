@@ -4,6 +4,7 @@
 <h2>Edit Profile</h2>
 <form method="POST">
   {{ form.hidden_tag() }}
+  <p>{{ form.username.label }}<br />{{ form.username }}</p>
   <p>{{ form.bio.label }}<br />{{ form.bio(rows=4) }}</p>
   <p>{{ form.skills_to_teach.label }}<br />{{ form.skills_to_teach() }}</p>
   <p>{{ form.skills_to_learn.label }}<br />{{ form.skills_to_learn() }}</p>
