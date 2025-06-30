@@ -1,13 +1,21 @@
 {% extends "base.html.j2" %}
 
 {% block content %}
-<h2>Edit Profile</h2>
-<form method="POST">
-  {{ form.hidden_tag() }}
-  <p>{{ form.username.label }}<br />{{ form.username }}</p>
-  <p>{{ form.bio.label }}<br />{{ form.bio(rows=4) }}</p>
-  <p>{{ form.skills_to_teach.label }}<br />{{ form.skills_to_teach() }}</p>
-  <p>{{ form.skills_to_learn.label }}<br />{{ form.skills_to_learn() }}</p>
-  <p>{{ form.submit() }}</p>
-</form>
+<h2 class="sub-heading ">Edit Profile</h2>
+<div class="edit-profile-container">
+  <div class="edit-profile-card">
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <p>{{ form.username.label }}<br />{{ form.username }}</p>
+      <p>{{ form.bio.label }}<br />{{ form.bio(rows=4) }}</p>
+      <p>{{ form.skills_to_teach.label }}<br />{{ form.skills_to_teach() }}</p>
+      <p>{{ form.skills_to_learn.label }}<br />{{ form.skills_to_learn() }}</p>
+      <p>
+      <div class="btn">
+        {{ form.submit(class="btn-primary") }}
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
 {% endblock %}

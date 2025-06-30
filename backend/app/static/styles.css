@@ -90,14 +90,19 @@ a
 .btn-login:hover{
   background-color: #383838;
 }
+#username,#bio,#skills_to_teach,#skills_to_learn{
+  padding: 10px;
+  border-radius: 20px;
+  margin-right: 10px;
+  font-size: 15px;
+  font-weight: 400;
 
-
-
+}
 #submit {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0D0D0D;
+  background-color: #4F46E5;
   color: white;
   font-size: 1rem;
   padding: 0.75em 2em;
@@ -109,7 +114,7 @@ a
 }
 
 #submit:hover {
-  background-color: #323232;
+  background-color: #09207e;
 }
 
 .btn-login-wrapper {
@@ -174,6 +179,30 @@ a
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+.edit-profile-container{
+  background: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 800px;
+  height: 50vh;
+  margin: 2rem auto;
+  border-radius: 20px;
+
+}
+.edit-profile-card{
+  font-family: 'HostGrotesk', sans-serif;
+  display: flex;
+  flex-direction: column;   /* stack elements vertically */
+  /* align-items: center;     center items horizontally */
+  gap: 16px;                /* spacing between elements */
+  text-align:center;
+  font-size: 20px
+
 }
 
 .styled-input {
@@ -393,4 +422,63 @@ img{
 .hero-image img {
   max-width: 100%;
   border-radius: 10px;
+}
+.flashes {
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.flash-message {
+  text-align: center;
+  position: relative;
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: white;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: fadeInSlide 0.4s ease forwards;
+  opacity: 0;
+  transform: translateY(-10px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Message type-specific styles */
+.flash-message.success {
+  background: rgba(40, 167, 69, 0.9);
+}
+.flash-message.danger {
+  background: rgba(220, 53, 69, 0.9);
+}
+.flash-message.info {
+  background: rgba(23, 162, 184, 0.9);
+}
+.flash-message.warning {
+  background: rgba(255, 193, 7, 0.9);
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+/* Animation */
+@keyframes fadeInSlide {
+  0% {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }
