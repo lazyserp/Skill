@@ -2,7 +2,7 @@
 
 SkillSwap is a Flask-based web application where users can register, log in, edit their profile, and match their **skills to teach** with others' **skills to learn**. It features a responsive UI, admin dashboard, glassmorphism design, and full authentication.
 
-![SkillSwap Screenshot](https://via.placeholder.com/1000x400?text=Screenshot+Here)
+<img width="645" alt="image" src="https://github.com/user-attachments/assets/f3cd3aec-6098-478e-81cf-e0909fd6573d" />
 
 ---
 
