@@ -7,7 +7,9 @@
 
 body {
   font-family: 'HostGrotesk', sans-serif;
-  background-image: url(./img.png) ;
+  background-image: url(./img.png)  ;
+  /* background-size: cover;
+  background-repeat: no-repeat; */
   height: 100vh;;
   color: #cacaca;
   line-height: 1.6;
@@ -197,12 +199,78 @@ a
   width: 500px;
 }
 
-/* .login-wrapper{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 
+.form-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.1); /* transparent white */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+h2.sub-heading {
+  text-align: center;
+  font-size: 40px;
+  color: #fff;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#searchinput {
+  padding: 10px;
+  width: 60%;
+  border-radius: 10px;
+  border: none;
+  margin-right: 10px;
+  outline: none;
+}
+
+form button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+th {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #f8f8f8;
+  font-weight: 600;
+}
+
+.actions form button {
+  margin: 0 3px;
+  padding: 6px 12px;
+  font-size: 14px;
+}
 .register-now {
     font-size: 0.9rem;
     margin-top: 1.5rem;

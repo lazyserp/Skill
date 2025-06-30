@@ -7,7 +7,7 @@
         {# <a href="#how-it-works"> How it Works </a>
         <a href="#features"> features </a> #}
         {# <a href="{{ url_for('home') }}"> SkillSwap</a> #}
-        <a href="{{ url_for('register') }}"> Join Now </a>
+        <a href="{{ url_for('auth.register') }}"> Join Now </a>
     </nav>
     <div class="main-title">SkillSwap</div>
 </header>
@@ -16,7 +16,7 @@
         <h1> Learn what you want. Teach what you love.</h1>
         {# <p>Connect with people in your area or online to swap skills and grow together.</p> #}
         <div class="btn">
-            <a class="btn-primary" href="{{ url_for('login') }}"> Get Started</a>
+            <a class="btn-primary" href="{{ url_for('auth.login') }}"> Get Started</a>
         </div>
     </div>
 </section>

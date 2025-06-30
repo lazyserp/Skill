@@ -1,48 +1,12 @@
-<!DOCTYPE html>
+{% extends 'base.html.j2'%}
 
-<html>
-
-<head>
-    <title>Admin Dashboard</title>
-    <style>
-        body {
-            font-family: Arial;
-            padding: 30px;
-        }
-
-        input[type="text"] {
-            padding: 6px;
-            width: 300px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th,
-        td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f3f3f3;
-        }
-
-        .actions button {
-            padding: 4px 10px;
-        }
-    </style>
-</head>
-
-<body>
-    <h2>Admin Dashboard</h2>
-    <form action="{{ url_for('admin_dashboard') }}" method="GET">
-        <input name="search" placeholder="Search by username/email" type="text"
+{% block content %}
+<h2 class="sub-heading "> Admin Dashboard </h2>
+<div class="form-container">
+    <form action="{{ url_for('auth.admin_dashboard') }}" method="GET">
+        <input name="search" id="searchinput" placeholder="Search by username/email" type="text"
             value="{{ request.args.get('search', '') }}" />
+
         <button type="submit">Search</button>
     </form>
     <table>
@@ -64,15 +28,18 @@
                 <td>{{ '✅' if user.is_admin else '❌' }}</td>
                 <td class="actions">
                     {% if not user.is_admin %}
-                    <form action="{{ url_for('promote_user', user_id=user.id) }}" method="POST" style="display:inline;">
+                    <form action="{{ url_for('auth.promote_user', user_id=user.id) }}" method="POST"
+                        style="display:inline;">
                         <button type="submit">Promote</button>
                     </form>
                     {% else %}
-                    <form action="{{ url_for('demote_user', user_id=user.id) }}" method="POST" style="display:inline;">
+                    <form action="{{ url_for('auth.demote_user', user_id=user.id) }}" method="POST"
+                        style="display:inline;">
                         <button type="submit">Demote</button>
                     </form>
                     {% endif %}
-                    <form action="{{ url_for('delete_user', user_id=user.id) }}" method="POST" style="display:inline;">
+                    <form action="{{ url_for('auth.delete_user', user_id=user.id) }}" method="POST"
+                        style="display:inline;">
                         <button onclick="return confirm('Delete this user?')" type="submit">Delete</button>
                     </form>
                 </td>
@@ -80,6 +47,5 @@
             {% endfor %}
         </tbody>
     </table>
-</body>
-
-</html>
+</div>
+{% endblock %}
